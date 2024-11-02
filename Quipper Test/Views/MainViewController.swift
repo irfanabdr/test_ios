@@ -11,8 +11,9 @@ import Combine
 class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     private var viewModel = CourseViewModel()
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
     
     private func initTableView() {
@@ -46,6 +48,18 @@ class MainViewController: UIViewController {
         tableView.estimatedRowHeight = 280
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == CourseDetalViewController.segue {
+            guard let detailVC = segue.destination as? CourseDetalViewController, let indexPath = tableView.indexPathForSelectedRow else {
+                return
+            }
+            
+            let selectedItem = viewModel.courses[indexPath.row]
+            let detailViewModel = CourseDetailViewModel(title: selectedItem.title)
+            detailVC.viewModel = detailViewModel
+        }
     }
 }
 
@@ -63,6 +77,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(viewModel.courses[indexPath.row].title)
+        performSegue(withIdentifier: CourseDetalViewController.segue, sender: self)
     }
 }

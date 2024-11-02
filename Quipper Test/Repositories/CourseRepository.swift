@@ -30,6 +30,23 @@ class CourseRepository {
         }
     }
     
+    func fetchCourse(by title: String) -> Course? {
+        var course: Course?
+        do {
+            let fetchRequest: NSFetchRequest<CourseEntity> = CourseEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(
+                format: "title == %@", title
+            )
+            if let entity = try coreDataStack.context.fetch(fetchRequest).first {
+                course = Course(entity)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return course
+    }
+    
     private func fetchAllCourses() -> [CourseEntity] {
         var entities = [CourseEntity]()
         do {
