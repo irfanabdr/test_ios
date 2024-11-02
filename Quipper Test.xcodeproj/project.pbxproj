@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EEAB87682CD61EA7006A23F9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EEAB87672CD61EA7006A23F9 /* Alamofire */; };
+		EEAB876B2CD61EB1006A23F9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EEAB876A2CD61EB1006A23F9 /* SDWebImage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		EEE3532B2CD5B91B00699146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,10 +35,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		EEE3533C2CD5B91B00699146 /* Exceptions for "Quipper Test" folder in "Quipper Test" target */ = {
+		EEAB876E2CD61F7E006A23F9 /* Exceptions for "Quipper Test" folder in "Quipper Test" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = EEE353102CD5B91900699146 /* Quipper Test */;
 		};
@@ -43,7 +48,7 @@
 		EEE353132CD5B91900699146 /* Quipper Test */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				EEE3533C2CD5B91B00699146 /* Exceptions for "Quipper Test" folder in "Quipper Test" target */,
+				EEAB876E2CD61F7E006A23F9 /* Exceptions for "Quipper Test" folder in "Quipper Test" target */,
 			);
 			path = "Quipper Test";
 			sourceTree = "<group>";
@@ -65,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEAB876B2CD61EB1006A23F9 /* SDWebImage in Frameworks */,
+				EEAB87682CD61EA7006A23F9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +132,8 @@
 			);
 			name = "Quipper Test";
 			packageProductDependencies = (
+				EEAB87672CD61EA7006A23F9 /* Alamofire */,
+				EEAB876A2CD61EB1006A23F9 /* SDWebImage */,
 			);
 			productName = "Quipper Test";
 			productReference = EEE353112CD5B91900699146 /* Quipper Test.app */;
@@ -208,6 +217,10 @@
 			);
 			mainGroup = EEE353082CD5B91900699146;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EEAB87662CD61EA7006A23F9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				EEAB87692CD61EB1006A23F9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EEE353122CD5B91900699146 /* Products */;
 			projectDirPath = "";
@@ -287,22 +300,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Quipper Test/Info.plist";
+				INFOPLIST_FILE = "Quipper Test/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.irfan.Quipper-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.irfan.quipper-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,22 +329,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Quipper Test/Info.plist";
+				INFOPLIST_FILE = "Quipper Test/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.irfan.Quipper-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.irfan.quipper-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,6 +580,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EEAB87662CD61EA7006A23F9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+		EEAB87692CD61EB1006A23F9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EEAB87672CD61EA7006A23F9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEAB87662CD61EA7006A23F9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		EEAB876A2CD61EB1006A23F9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEAB87692CD61EB1006A23F9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EEE353092CD5B91900699146 /* Project object */;
 }
