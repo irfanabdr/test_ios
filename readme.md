@@ -4,5 +4,4 @@ A mobile app to display a list of courses and detailed information about each co
 
 ## Screenshots
 
-![iOS List](screenshots/ios_list.png)
-![iOS Detail](screenshots/ios_detail.png)
+<img src="screenshots/ios_list.png" width="250">  <img src="screenshots/ios_detail.png" width="250">
