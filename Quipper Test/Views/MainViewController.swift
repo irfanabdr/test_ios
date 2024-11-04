@@ -11,6 +11,8 @@ import Combine
 class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var labelError: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var viewModel = CourseViewModel()
     private var cancellables = Set<AnyCancellable>()
@@ -21,10 +23,10 @@ class MainViewController: UIViewController {
         initNavigationBar()
         initTableView()
         
-        viewModel.$courses
+        viewModel.$state
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
+            .sink { [weak self] state in
+                self?.handleState(state)
             }
             .store(in: &cancellables)
         
@@ -48,6 +50,23 @@ class MainViewController: UIViewController {
         tableView.estimatedRowHeight = 280
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func handleState(_ state: AppState) {
+        switch state {
+        case .loading:
+            self.labelError.isHidden = true
+            self.activityIndicator.isHidden = false
+        case .success:
+            self.activityIndicator.isHidden = true
+            self.tableView.reloadData()
+        case .error(let message):
+            self.activityIndicator.isHidden = true
+            self.labelError.text = message
+            self.labelError.isHidden = false
+        default:
+            break
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

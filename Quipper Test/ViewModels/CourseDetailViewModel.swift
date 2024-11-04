@@ -19,7 +19,7 @@ class CourseDetailViewModel: ObservableObject {
     
     func fetchCourse() {
         if let title = selectedTitle {
-            course = courseRepository.fetchCourse(by: title)
+            course = courseRepository.getCourse(by: title)
         }
     }
 }

@@ -17,29 +17,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHm-tq-QCp">
-                                <rect key="frame" x="175" y="415" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iQe-xI-z0K">
                                 <rect key="frame" x="0.0" y="111" width="393" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHm-tq-QCp">
+                                <rect key="frame" x="179" y="452" width="35.333333333333343" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Sd4-na-tUZ">
+                                <rect key="frame" x="178" y="442" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iQe-xI-z0K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0D4-f9-l4L"/>
+                            <constraint firstItem="Sd4-na-tUZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7D6-jV-8M3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iQe-xI-z0K" secondAttribute="bottom" constant="8" id="DcV-bm-c9C"/>
+                            <constraint firstItem="oHm-tq-QCp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Ts3-Gm-BTm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iQe-xI-z0K" secondAttribute="trailing" id="cdt-Ou-Zbw"/>
                             <constraint firstItem="iQe-xI-z0K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="dZX-Qo-56y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oHm-tq-QCp" secondAttribute="trailing" constant="16" id="iKK-4G-YoO"/>
+                            <constraint firstItem="Sd4-na-tUZ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="lJg-T0-HTG"/>
+                            <constraint firstItem="oHm-tq-QCp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lT8-B5-aWb"/>
+                            <constraint firstItem="oHm-tq-QCp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="nJF-rW-3Le"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quipper Test" id="P6Y-85-TMH"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Sd4-na-tUZ" id="MKe-3z-lHC"/>
+                        <outlet property="labelError" destination="oHm-tq-QCp" id="0O4-Xn-sK1"/>
                         <outlet property="tableView" destination="iQe-xI-z0K" id="WkR-9U-upN"/>
                         <segue destination="dqm-ya-6gn" kind="show" identifier="toDetail" id="knj-EH-42Q"/>
                     </connections>

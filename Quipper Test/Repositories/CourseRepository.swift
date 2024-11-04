@@ -7,30 +7,36 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class CourseRepository {
     private let apiService = ApiService.shared
     private let coreDataStack = CoreDataStack.shared
     
-    func fetchCourses(completion: @escaping ([Course]) -> Void) {
-        let cachedData = fetchCachedData()
-        if !cachedData.isEmpty {
-            completion(cachedData)
-        }
-        
-        apiService.getCourses { result in
-            switch result {
-            case .success(let courses):
-                self.saveToCache(courses)
-                completion(courses)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion([])
-            }
-        }
+    func fetchCourses() -> AnyPublisher<[Course], Error> {
+        return apiService.getCourses()
     }
     
-    func fetchCourse(by title: String) -> Course? {
+    func getCachedData() -> [Course] {
+        return getAllCourses().map { Course($0) }
+    }
+    
+    func saveToCache(_ courses: [Course]) {
+        deleteAllCourses(getAllCourses())
+        
+        for course in courses {
+            let entity = CourseEntity(context: coreDataStack.context)
+            entity.title = course.title
+            entity.presenterName = course.presenterName
+            entity.desc = course.description
+            entity.thumbnailUrl = course.thumbnailURL
+            entity.videoUrl = course.videoURL
+            entity.videoDuration = Int32(course.videoDuration)
+        }
+        coreDataStack.save()
+    }
+    
+    func getCourse(by title: String) -> Course? {
         var course: Course?
         do {
             let fetchRequest: NSFetchRequest<CourseEntity> = CourseEntity.fetchRequest()
@@ -47,7 +53,7 @@ class CourseRepository {
         return course
     }
     
-    private func fetchAllCourses() -> [CourseEntity] {
+    private func getAllCourses() -> [CourseEntity] {
         var entities = [CourseEntity]()
         do {
             let fetchRequest: NSFetchRequest<CourseEntity> = CourseEntity.fetchRequest()
@@ -62,25 +68,6 @@ class CourseRepository {
     private func deleteAllCourses(_ entities: [CourseEntity]) {
         for entity in entities {
             coreDataStack.context.delete(entity)
-        }
-        coreDataStack.save()
-    }
-    
-    private func fetchCachedData() -> [Course] {
-        return fetchAllCourses().map { Course($0) }
-    }
-    
-    private func saveToCache(_ courses: [Course]) {
-        deleteAllCourses(fetchAllCourses())
-        
-        for course in courses {
-            let entity = CourseEntity(context: coreDataStack.context)
-            entity.title = course.title
-            entity.presenterName = course.presenterName
-            entity.desc = course.description
-            entity.thumbnailUrl = course.thumbnailURL
-            entity.videoUrl = course.videoURL
-            entity.videoDuration = Int32(course.videoDuration)
         }
         coreDataStack.save()
     }

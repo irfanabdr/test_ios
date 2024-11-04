@@ -7,19 +7,19 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 class ApiService {
     static let shared = ApiService()
     
-    func getCourses(completion: @escaping (Result<[Course], Error>) -> Void) {
+    func getCourses() -> AnyPublisher<[Course], Error> {
         let url = "https://quipper.github.io/native-technical-exam/playlist.json"
-        AF.request(url).responseDecodable(of: [Course].self) { response in
-            switch response.result {
-            case .success(let courses):
-                completion(.success(courses))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        return AF.request(url)
+            .validate()
+            .publishDecodable(type: [Course].self)
+            .value()
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
     }
+    
 }
